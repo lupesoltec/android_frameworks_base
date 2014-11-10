@@ -112,6 +112,7 @@ public class NotificationPanelView extends PanelView implements
     static final String COUNTER_PANEL_OPEN_QS = "panel_open_qs";
     private static final String COUNTER_PANEL_OPEN_PEEK = "panel_open_peek";
 
+    private static final String STATUS_BAR_QUICK_QS_PULLDOWN = Settings.Secure.STATUS_BAR_QUICK_QS_PULLDOWN;
     private static final String DOUBLE_TAP_SLEEP_GESTURE = Settings.Secure.DOUBLE_TAP_SLEEP_GESTURE;
 
     private static final Rect mDummyDirtyRect = new Rect(0, 0, 1, 1);
@@ -315,6 +316,7 @@ public class NotificationPanelView extends PanelView implements
             .setAnimationFinishListener(mAnimatorListenerAdapter)
             .setCustomInterpolator(PANEL_ALPHA.getProperty(), Interpolators.ALPHA_IN);
 
+    private int mOneFingerQuickSettingsIntercept;
     private boolean mDoubleTapToSleepEnabled;
     private GestureDetector mDoubleTapGesture;
 
@@ -373,6 +375,7 @@ public class NotificationPanelView extends PanelView implements
         mSettingsObserver.observe();
         FragmentHostManager.get(this).addTagListener(QS.TAG, mFragmentListener);
         final TunerService tunerService = Dependency.get(TunerService.class);
+        tunerService.addTunable(this, STATUS_BAR_QUICK_QS_PULLDOWN);
         tunerService.addTunable(this, DOUBLE_TAP_SLEEP_GESTURE);
     }
 
@@ -386,6 +389,9 @@ public class NotificationPanelView extends PanelView implements
 
     @Override
     public void onTuningChanged(String key, String newValue) {
+        if (STATUS_BAR_QUICK_QS_PULLDOWN.equals(key)) {
+            mOneFingerQuickSettingsIntercept = newValue == null ? 1 : Integer.parseInt(newValue);
+        }
         if (DOUBLE_TAP_SLEEP_GESTURE.equals(key)) {
             mDoubleTapToSleepEnabled = newValue == null || Integer.parseInt(newValue) == 1;
         }
@@ -1031,7 +1037,22 @@ public class NotificationPanelView extends PanelView implements
                 && (event.isButtonPressed(MotionEvent.BUTTON_SECONDARY)
                         || event.isButtonPressed(MotionEvent.BUTTON_TERTIARY));
 
-        return twoFingerDrag || stylusButtonClickDrag || mouseButtonClickDrag;
+        final float w = getMeasuredWidth();
+        final float x = event.getX();
+        float region = w * 1.f / 4.f; // TODO overlay region fraction?
+        boolean showQsOverride = false;
+
+        switch (mOneFingerQuickSettingsIntercept) {
+            case 1: // Right side pulldown
+                showQsOverride = isLayoutRtl() ? x < region : w - region < x;
+                break;
+            case 2: // Left side pulldown
+                showQsOverride = isLayoutRtl() ? w - region < x : x < region;
+                break;
+        }
+        showQsOverride &= mStatusBarState == StatusBarState.SHADE;
+
+        return twoFingerDrag || showQsOverride || stylusButtonClickDrag || mouseButtonClickDrag;
     }
 
     private void handleQsDown(MotionEvent event) {
