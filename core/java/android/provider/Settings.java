@@ -4236,7 +4236,9 @@ public final class Settings {
          */
         public static final String FACE_AUTO_UNLOCK = "face_auto_unlock";
 
-         /** @hide */
+        /** 
+         * @hide 
+         */
         public static final Validator FACE_AUTO_UNLOCK_VALIDATOR =
                 BOOLEAN_VALIDATOR;
 
@@ -4251,10 +4253,17 @@ public final class Settings {
          */
         public static final String NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD = "network_traffic_autohide_threshold";
 
-        /** Whether to skip music track with volume rocker
+        /** 
+         * Whether to skip music track with volume rocker
          *  @hide
          */
         public static final String VOLUME_BUTTON_MUSIC_CONTROL = "volume_button_music_control";
+        
+        /**
+         * Enable/Disable screenshot sound
+         * @hide
+         */
+        public static final String SCREENSHOT_SOUND = "screenshot_sound";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
@@ -4455,6 +4464,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_STATE);
             PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD);
             PRIVATE_SETTINGS.add(VOLUME_BUTTON_MUSIC_CONTROL);
+            PRIVATE_SETTINGS.add(SCREENSHOT_SOUND);
         }
 
         /**
