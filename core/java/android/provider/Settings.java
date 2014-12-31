@@ -4302,6 +4302,12 @@ public final class Settings {
         public static final String BATTERY_LIGHT_ENABLED = "battery_light_enabled";
 
         /**
+         * Whether to use the custom quick unlock screen control
+         * @hide
+         */
+        public static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL = "lockscreen_quick_unlock_control";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -4506,6 +4512,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(ACCENT_PICKER);
             PRIVATE_SETTINGS.add(USE_BLACK_THEME);
             PRIVATE_SETTINGS.add(BATTERY_LIGHT_ENABLED);
+            PRIVATE_SETTINGS.add(LOCKSCREEN_QUICK_UNLOCK_CONTROL);
         }
 
         /**
