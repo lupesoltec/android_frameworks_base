@@ -4638,6 +4638,16 @@ public final class Settings {
                 BOOLEAN_VALIDATOR;
 
         /**
+         * Swipe to screenshot gesture
+         * Also known as Three Fingers Screenshot.
+         * @hide
+         */
+        public static final String SWIPE_TO_SCREENSHOT = "swipe_to_screenshot";
+
+        private static final Validator SWIPE_TO_SCREENSHOT_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -4717,6 +4727,7 @@ public final class Settings {
             LOCK_QS_DISABLED,
             SHOW_FOURG_ICON,
             SHOW_VOLTE_ICON,
+            SWIPE_TO_SCREENSHOT,
         };
 
         /**
@@ -4851,6 +4862,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(LOCK_QS_DISABLED);
             PRIVATE_SETTINGS.add(SHOW_FOURG_ICON);
             PRIVATE_SETTINGS.add(SHOW_VOLTE_ICON);
+            PRIVATE_SETTINGS.add(SWIPE_TO_SCREENSHOT);
         }
 
         /**
@@ -4959,6 +4971,7 @@ public final class Settings {
             VALIDATORS.put(LOCK_QS_DISABLED, LOCK_QS_DISABLED_VALIDATOR);
             VALIDATORS.put(SHOW_FOURG_ICON, SHOW_FOURG_ICON_VALIDATOR);
             VALIDATORS.put(SHOW_VOLTE_ICON, SHOW_VOLTE_ICON_VALIDATOR);
+            VALIDATORS.put(SWIPE_TO_SCREENSHOT, SWIPE_TO_SCREENSHOT_VALIDATOR);
         }
 
         /**
