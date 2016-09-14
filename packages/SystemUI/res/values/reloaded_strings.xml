@@ -135,6 +135,8 @@
     <string name="network_traffic_state_summary">Show network activity</string>
     <string name="network_traffic_autohide_title">Autohide network traffic</string>
     <string name="network_traffic_autohide_summary">Autohide network traffic on inactivity</string>
+    <string name="network_traffic_hidearrow_title">Hide arrows</string>
+    <string name="network_traffic_hidearrow_summary">Hide the network traffic indicator arrows</string>
 
     <!-- Status bar - Others -->
     <string name="status_bar_quick_qs_pulldown_title">Quick pulldown</string>
