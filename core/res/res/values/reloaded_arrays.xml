@@ -14,20 +14,12 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
 
-    <!-- Reloaded Tuner -->
-    <string name="reloaded_tuner_title">Reloaded Tuner</string>
-    <string name="reloaded_tuner_summary">Tune your experience</string>
-
-    <!-- Status bar -->
-    <string name="status_bar_icons">Statusbar icons</string>
-
-    <!-- Advanced reboot -->
-    <string name="global_action_reboot">Restart</string>
-    <string name="global_action_reboot_more">Restart\u2026</string>
-    <string name="global_action_reboot_sub">System</string>
-    <string name="global_action_reboot_recovery">Recovery</string>
-    <string name="global_action_reboot_bootloader">Bootloader</string>
+    <string-array translatable="false" name="config_rebootActionsList">
+        <item>restart</item>
+        <item>reboot_recovery</item>
+        <item>reboot_bootloader</item>
+    </string-array>
 
 </resources>
