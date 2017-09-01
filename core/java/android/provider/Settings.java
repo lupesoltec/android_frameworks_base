@@ -4514,6 +4514,17 @@ public final class Settings {
                 BOOLEAN_VALIDATOR;
 
         /**
+         * Double tap on lockscreen to sleep
+         * @hide
+         */
+        public static final String DOUBLE_TAP_SLEEP_LOCKSCREEN =
+                "double_tap_sleep_lockscreen";
+
+        /** @hide */
+        private static final Validator DOUBLE_TAP_SLEEP_LOCKSCREEN_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -4583,6 +4594,7 @@ public final class Settings {
             LOCK_POWER_MENU_DISABLED,
             BACK_GESTURE_HEIGHT,
             DOUBLE_TAP_SLEEP_GESTURE,
+            DOUBLE_TAP_SLEEP_LOCKSCREEN,
         };
 
         /**
@@ -4707,6 +4719,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(LOCK_POWER_MENU_DISABLED);
             PRIVATE_SETTINGS.add(BACK_GESTURE_HEIGHT);
             PRIVATE_SETTINGS.add(DOUBLE_TAP_SLEEP_GESTURE);
+            PRIVATE_SETTINGS.add(DOUBLE_TAP_SLEEP_LOCKSCREEN);
         }
 
         /**
@@ -4805,6 +4818,7 @@ public final class Settings {
             VALIDATORS.put(LOCK_POWER_MENU_DISABLED, LOCK_POWER_MENU_DISABLED_VALIDATOR);
             VALIDATORS.put(BACK_GESTURE_HEIGHT, BACK_GESTURE_HEIGHT_VALIDATOR);
             VALIDATORS.put(DOUBLE_TAP_SLEEP_GESTURE, DOUBLE_TAP_SLEEP_GESTURE_VALIDATOR);
+            VALIDATORS.put(DOUBLE_TAP_SLEEP_LOCKSCREEN, DOUBLE_TAP_SLEEP_LOCKSCREEN_VALIDATOR);
         }
 
         /**
