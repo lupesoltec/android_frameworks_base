@@ -22,8 +22,15 @@ import android.os.Handler;
 import android.os.PowerManager;
 import android.os.SystemClock;
 import android.os.UserHandle;
+import android.os.RemoteException;
+import android.os.ServiceManager;
+
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraCharacteristics;
+import android.hardware.camera2.CameraManager;
 
 import com.android.internal.R;
+import com.android.internal.statusbar.IStatusBarService;
 
 /**
  * Some custom utilities
@@ -59,6 +66,56 @@ public class ReloadedUtils {
         PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
         if (pm!= null) {
             pm.goToSleep(SystemClock.uptimeMillis());
+        }
+    }
+    
+    public static boolean deviceSupportsFlashLight(Context context) {
+        CameraManager cameraManager = (CameraManager) context.getSystemService(
+                Context.CAMERA_SERVICE);
+        try {
+            String[] ids = cameraManager.getCameraIdList();
+            for (String id : ids) {
+                CameraCharacteristics c = cameraManager.getCameraCharacteristics(id);
+                Boolean flashAvailable = c.get(CameraCharacteristics.FLASH_INFO_AVAILABLE);
+                Integer lensFacing = c.get(CameraCharacteristics.LENS_FACING);
+                if (flashAvailable != null
+                        && flashAvailable
+                        && lensFacing != null
+                        && lensFacing == CameraCharacteristics.LENS_FACING_BACK) {
+                    return true;
+                }
+            }
+        } catch (CameraAccessException e) {
+            // Ignore
+        }
+        return false;
+    }
+    
+    public static void toggleCameraFlash() {
+        FireActions.toggleCameraFlash();
+    }
+
+    private static final class FireActions {
+        private static IStatusBarService mStatusBarService = null;
+        private static IStatusBarService getStatusBarService() {
+            synchronized (FireActions.class) {
+                if (mStatusBarService == null) {
+                    mStatusBarService = IStatusBarService.Stub.asInterface(
+                            ServiceManager.getService("statusbar"));
+                }
+                return mStatusBarService;
+            }
+        }
+
+        public static void toggleCameraFlash() {
+            IStatusBarService service = getStatusBarService();
+            if (service != null) {
+                try {
+                    service.toggleCameraFlash();
+                } catch (RemoteException e) {
+                    // do nothing.
+                }
+            }
         }
     }
 
