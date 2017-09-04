@@ -75,4 +75,7 @@
   <java-symbol type="color" name="autofill_save_title_color" />
   <java-symbol type="color" name="autofill_autofill_save_custom_subtitle_color" />
 
+  <!-- Leds -->
+  <java-symbol type="bool" name="config_intrusiveBatteryLed" />
+
 </resources>

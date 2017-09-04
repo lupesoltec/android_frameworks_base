@@ -59,4 +59,7 @@
 
     <!-- True if the notifications should tint the app name with the dynamic or the accent color -->
     <bool name="config_allowNotificationAppNameTextTinting">false</bool>
+
+    <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
+    <bool name="config_intrusiveBatteryLed">false</bool>
 </resources>
