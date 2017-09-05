@@ -4555,6 +4555,33 @@ public final class Settings {
                 BOOLEAN_VALIDATOR;
 
         /**
+         * Whether the phone vibrates on call connect
+         * @hide
+         */
+        public static final String VIBRATE_ON_CONNECT = "vibrate_on_connect";
+
+        private static final Validator VIBRATE_ON_CONNECT_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+         /**
+         * Whether the phone vibrates on call waiting
+         * @hide
+         */
+        public static final String VIBRATE_ON_CALLWAITING = "vibrate_on_callwaiting";
+
+        private static final Validator VIBRATE_ON_CALLWAITING_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+         /**
+         * Whether the phone vibrates on disconnect
+         * @hide
+         */
+        public static final String VIBRATE_ON_DISCONNECT = "vibrate_on_disconnect";
+
+        private static final Validator VIBRATE_ON_DISCONNECT_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -4628,6 +4655,9 @@ public final class Settings {
             STATUS_BAR_QUICK_QS_PULLDOWN,
             FINGERPRINT_SUCCESS_VIB,
             LOCK_QS_DISABLED,
+            VIBRATE_ON_CONNECT,
+            VIBRATE_ON_CALLWAITING,
+            VIBRATE_ON_DISCONNECT,
         };
 
         /**
@@ -4756,6 +4786,9 @@ public final class Settings {
             PRIVATE_SETTINGS.add(STATUS_BAR_QUICK_QS_PULLDOWN);
             PRIVATE_SETTINGS.add(FINGERPRINT_SUCCESS_VIB);
             PRIVATE_SETTINGS.add(LOCK_QS_DISABLED);
+            PRIVATE_SETTINGS.add(VIBRATE_ON_CONNECT);
+            PRIVATE_SETTINGS.add(VIBRATE_ON_CALLWAITING);
+            PRIVATE_SETTINGS.add(VIBRATE_ON_DISCONNECT);
         }
 
         /**
@@ -4858,6 +4891,9 @@ public final class Settings {
             VALIDATORS.put(STATUS_BAR_QUICK_QS_PULLDOWN, STATUS_BAR_QUICK_QS_PULLDOWN_VALIDATOR);
             VALIDATORS.put(FINGERPRINT_SUCCESS_VIB, FINGERPRINT_SUCCESS_VIB_VALIDATOR);
             VALIDATORS.put(LOCK_QS_DISABLED, LOCK_QS_DISABLED_VALIDATOR);
+            VALIDATORS.put(VIBRATE_ON_CONNECT, VIBRATE_ON_CONNECT_VALIDATOR);
+            VALIDATORS.put(VIBRATE_ON_CALLWAITING, VIBRATE_ON_CALLWAITING_VALIDATOR);
+            VALIDATORS.put(VIBRATE_ON_DISCONNECT, VIBRATE_ON_DISCONNECT_VALIDATOR);
         }
 
         /**
