@@ -33,6 +33,8 @@
     <string name="global_actions_advanced_reboot_title">Advanced restart</string>
     <string name="global_actions_advanced_reboot_summary">Show recovery and bootloader restart options</string>
 
-    <!-- Lockscreen clock -->
+    <!-- Lockscreen -->
+    <string name="lockscreen_default">Default</string>
+    <string name="lockscreen_hidden">None</string>
     <string name="lockscreen_clock">Lockscreen clock</string>
 </resources>
