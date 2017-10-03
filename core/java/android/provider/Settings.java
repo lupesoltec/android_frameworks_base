@@ -7998,6 +7998,12 @@ public final class Settings {
         public static final String NOTIFICATION_BADGING = "notification_badging";
 
         private static final Validator NOTIFICATION_BADGING_VALIDATOR = BOOLEAN_VALIDATOR;
+        
+        /**
+         * Doublt tap to sleep gesture
+         * @hide
+         */
+        public static final String DOUBLE_TAP_SLEEP_GESTURE = "double_tap_sleep_gesture";
 
         /**
          *
