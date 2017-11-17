@@ -4203,7 +4203,25 @@ public final class Settings {
          * @hide
          */
         public static final String QS_TILE_HIDE_TITLE = "qs_tile_hide_title";
+        
+        /**
+         * Whether the phone vibrates on call connect
+         * @hide
+         */
+        public static final String VIBRATE_ON_CONNECT = "vibrate_on_connect";
 
+        /**
+         * Whether the phone vibrates on call waiting
+         * @hide
+         */
+        public static final String VIBRATE_ON_CALLWAITING = "vibrate_on_callwaiting";
+
+        /**
+         * Whether the phone vibrates on disconnect
+         * @hide
+         */
+        public static final String VIBRATE_ON_DISCONNECT = "vibrate_on_disconnect";
+        
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
@@ -4395,6 +4413,9 @@ public final class Settings {
             PRIVATE_SETTINGS.add(QS_LAYOUT_ROWS);
             PRIVATE_SETTINGS.add(QS_LAYOUT_ROWS_LANDSCAPE);
             PRIVATE_SETTINGS.add(QS_TILE_HIDE_TITLE);
+            PRIVATE_SETTINGS.add(VIBRATE_ON_CONNECT);
+            PRIVATE_SETTINGS.add(VIBRATE_ON_CALLWAITING);
+            PRIVATE_SETTINGS.add(VIBRATE_ON_DISCONNECT);
         }
 
         /**
