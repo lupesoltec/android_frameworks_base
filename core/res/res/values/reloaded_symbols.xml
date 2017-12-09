@@ -48,4 +48,8 @@
   <java-symbol type="string" name="config_deviceKeyHandlerLib" />
   <java-symbol type="string" name="config_deviceKeyHandlerClass" />
 
+  <!-- Toast text and bg colors -->
+  <java-symbol type="color" name="toast_bg_color" />
+  <java-symbol type="color" name="toast_text_color" />
+
 </resources>
