@@ -4288,6 +4288,13 @@ public final class Settings {
         public static final String ACCENT_PICKER = "accent_picker";
 
         /**
+         * Whether to use black themes in place of dark
+         *
+         * @hide
+         */
+        public static final String USE_BLACK_THEME = "use_black_theme";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -4490,6 +4497,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(BUTTON_EXTRA_KEY_MAPPING);
             PRIVATE_SETTINGS.add(DEVICE_PROXI_CHECK_ENABLED);
             PRIVATE_SETTINGS.add(ACCENT_PICKER);
+            PRIVATE_SETTINGS.add(USE_BLACK_THEME);
         }
 
         /**
