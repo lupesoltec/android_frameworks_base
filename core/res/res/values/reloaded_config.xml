@@ -75,4 +75,7 @@
 
     <!-- Performance Profiles -->
     <bool name="config_hasPerformanceProfiles">false</bool>
+
+    <!-- Whether to ignore RSSNR Level or not -->
+    <bool name="config_ignoreRssnrSignalLevel">false</bool>
 </resources>
