@@ -4648,6 +4648,15 @@ public final class Settings {
                 BOOLEAN_VALIDATOR;
 
         /**
+         * Whether to show the battery info on the lockscreen while charging
+         * @hide
+         */
+        public static final String LOCKSCREEN_BATTERY_INFO = "lockscreen_battery_info";
+
+        private static final Validator LOCKSCREEN_BATTERY_INFO_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -4728,6 +4737,7 @@ public final class Settings {
             SHOW_FOURG_ICON,
             SHOW_VOLTE_ICON,
             SWIPE_TO_SCREENSHOT,
+            LOCKSCREEN_BATTERY_INFO,
         };
 
         /**
@@ -4863,6 +4873,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(SHOW_FOURG_ICON);
             PRIVATE_SETTINGS.add(SHOW_VOLTE_ICON);
             PRIVATE_SETTINGS.add(SWIPE_TO_SCREENSHOT);
+            PRIVATE_SETTINGS.add(LOCKSCREEN_BATTERY_INFO);
         }
 
         /**
@@ -4972,6 +4983,7 @@ public final class Settings {
             VALIDATORS.put(SHOW_FOURG_ICON, SHOW_FOURG_ICON_VALIDATOR);
             VALIDATORS.put(SHOW_VOLTE_ICON, SHOW_VOLTE_ICON_VALIDATOR);
             VALIDATORS.put(SWIPE_TO_SCREENSHOT, SWIPE_TO_SCREENSHOT_VALIDATOR);
+            VALIDATORS.put(LOCKSCREEN_BATTERY_INFO, LOCKSCREEN_BATTERY_INFO_VALIDATOR);
         }
 
         /**
