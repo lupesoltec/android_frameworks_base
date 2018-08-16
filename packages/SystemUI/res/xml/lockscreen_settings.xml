@@ -61,6 +61,12 @@
         android:title="@string/fp_success_auth_vib_title"
         android:summary="@string/fp_success_auth_vib_summary"
         android:defaultValue="true" />
+        
+    <com.android.systemui.reloaded.SystemSettingSwitchPreference
+        android:key="lockscreen_battery_info"
+        android:title="@string/lockscreen_battery_info_title"
+        android:summary="@string/lockscreen_battery_info_summary"
+        android:defaultValue="false" />
 
     <com.android.systemui.reloaded.SecureSettingListPreference
         android:key="torch_power_button_gesture"

@@ -171,6 +171,10 @@
     <string name="fp_success_auth_vib_title">Fingerprint authentication</string>
     <string name="fp_success_auth_vib_summary">Vibrate on successful fingerprint authentication</string>
 
+    <!-- Lockscreen battery info indicator  -->
+    <string name="lockscreen_battery_info_title">Lockscreen charging info</string>
+    <string name="lockscreen_battery_info_summary">Display negociated charger max current and voltage and battery temperature on lockscreen while charging</string>
+
     <!-- Power Menu -->
     <string name="power_menu_title">Power Menu</string>
     <string name="global_actions_advanced_reboot_title">Advanced restart</string>
