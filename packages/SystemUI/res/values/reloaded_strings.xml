@@ -92,6 +92,11 @@
     <string name="network_traffic_state_title">Network traffic</string>
     <string name="network_traffic_state_title_summary">Show network activity</string>
     <string name="network_traffic_autohide_threshold_title">Net traffic autohide threshold (KB/s)</string>
+    
+    <!-- StatusBar -->
+    <string name="statusbar_settings_category">Status Bar</string>
+    <string name="use_old_mobiletype_title">Use old mobile type style</string>
+    <string name="use_old_mobiletype_summary">Merge signal and type icons</string>
 
     <!-- Status bar - Battery -->
     <string name="status_bar_battery_title">Battery</string>
