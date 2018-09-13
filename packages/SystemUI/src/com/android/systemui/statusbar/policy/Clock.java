@@ -81,6 +81,7 @@ public class Clock extends TextView implements DemoMode, Tunable, CommandQueue.C
 
     private boolean mClockVisibleByPolicy = true;
     private boolean mClockVisibleByUser = true;
+    private boolean mClockHideableByUser = true;
 
     private boolean mAttached;
     private Calendar mCalendar;
@@ -270,8 +271,10 @@ public class Clock extends TextView implements DemoMode, Tunable, CommandQueue.C
     }
 
     public void setClockVisibleByUser(boolean visible) {
-        mClockVisibleByUser = visible;
-        updateClockVisibility();
+        if (mClockHideableByUser) {
+            mClockVisibleByUser = visible;
+            updateClockVisibility();
+        }
     }
 
     public void setClockVisibilityByPolicy(boolean visible) {
@@ -287,6 +290,14 @@ public class Clock extends TextView implements DemoMode, Tunable, CommandQueue.C
         boolean visible = shouldBeVisible();
         int visibility = visible ? View.VISIBLE : View.GONE;
         super.setVisibility(visibility);
+    }
+
+    public boolean isClockVisible() {
+        return mClockVisibleByPolicy && mClockVisibleByUser;
+    }
+
+    public void setClockHideableByUser(boolean value) {
+        mClockHideableByUser = value;
     }
 
     final void updateClock() {
