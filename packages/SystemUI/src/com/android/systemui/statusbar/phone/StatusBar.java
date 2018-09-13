@@ -224,6 +224,7 @@ import com.android.systemui.statusbar.policy.KeyguardUserSwitcher;
 import com.android.systemui.statusbar.policy.NetworkController;
 import com.android.systemui.statusbar.policy.OnHeadsUpChangedListener;
 import com.android.systemui.statusbar.policy.RemoteInputQuickSettingsDisabler;
+import com.android.systemui.statusbar.policy.TelephonyIcons;
 import com.android.systemui.statusbar.policy.UserInfoController;
 import com.android.systemui.statusbar.policy.UserInfoControllerImpl;
 import com.android.systemui.statusbar.policy.UserSwitcherController;
@@ -317,6 +318,8 @@ public class StatusBar extends SystemUI implements DemoMode,
 
     /** If true, the lockscreen will show a distinct wallpaper */
     public static final boolean ENABLE_LOCKSCREEN_WALLPAPER = true;
+
+    public static boolean USE_OLD_MOBILETYPE = false;
 
     static {
         boolean onlyCoreApps;
@@ -616,6 +619,9 @@ public class StatusBar extends SystemUI implements DemoMode,
             mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
                     Settings.System.LOCK_QS_DISABLED),
                     false, this, UserHandle.USER_ALL);
+             mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.USE_OLD_MOBILETYPE),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -629,6 +635,13 @@ public class StatusBar extends SystemUI implements DemoMode,
             }
             if (mNotificationPanel != null) {
                 mNotificationPanel.updateSettings();
+            }
+            boolean mOldMobileType = Settings.System.getIntForUser(mContext.getContentResolver(),
+                    Settings.System.USE_OLD_MOBILETYPE, 0,
+                    UserHandle.USER_CURRENT) != 0;
+            if(USE_OLD_MOBILETYPE != mOldMobileType){
+                USE_OLD_MOBILETYPE = mOldMobileType;
+                TelephonyIcons.updateIcons(USE_OLD_MOBILETYPE);
             }
         }
     }
