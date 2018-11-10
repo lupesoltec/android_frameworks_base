@@ -4444,6 +4444,12 @@ public final class Settings {
         public static final Validator LOCKSCREEN_BATTERY_INFO_VALIDATOR = BOOLEAN_VALIDATOR;
 
         /**
+         * Whether to use icon pack for Recents
+         * @hide
+         */
+        public static final String RECENTS_ICON_PACK = "recents_icon_pack";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -4665,6 +4671,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(FP_SUCCESS_AUTH_VIB);
             PRIVATE_SETTINGS.add(SWIPE_TO_SCREENSHOT);
             PRIVATE_SETTINGS.add(LOCKSCREEN_BATTERY_INFO);
+            PRIVATE_SETTINGS.add(RECENTS_ICON_PACK);
         }
 
         /**
