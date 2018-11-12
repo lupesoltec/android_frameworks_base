@@ -832,7 +832,7 @@ public class StatusBar extends SystemUI implements DemoMode,
         Dependency.get(ActivityStarterDelegate.class).setActivityStarterImpl(this);
 
         Dependency.get(ConfigurationController.class).addCallback(this);
-        
+
         mSettingsObserver = new SettingsObserver(mHandler);
         mSettingsObserver.observe();
         mSettingsObserver.update();
@@ -2356,6 +2356,27 @@ public class StatusBar extends SystemUI implements DemoMode,
             mFlashlightController.initFlashLight();
             if (mFlashlightController.hasFlashlight() && mFlashlightController.isAvailable()) {
                 mFlashlightController.setFlashlight(!mFlashlightController.isEnabled());
+            }
+        }
+    }
+
+    @Override
+    public void toggleNavigationBar(boolean enable) {
+        if (enable) {
+            if (mNavigationBarView == null) {
+                try {
+                    createNavigationBar();
+                } catch (Exception e) {
+                    // monkey tapping the toggle more times and too fast
+                }
+            }
+        } else {
+            if (mNavigationBarView != null){
+                FragmentHostManager fm = FragmentHostManager.get(mNavigationBarView);
+                mWindowManager.removeViewImmediate(mNavigationBarView);
+                mNavigationBarView = null;
+                fm.getFragmentManager().beginTransaction().remove(mNavigationBar).commit();
+                mNavigationBar = null;
             }
         }
     }
