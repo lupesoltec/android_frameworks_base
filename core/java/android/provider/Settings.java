@@ -4314,6 +4314,12 @@ public final class Settings {
         public static final String USE_OLD_MOBILETYPE = "use_old_mobiletype";
 
         /**
+         * Whether to display 4G icon instead LTE
+         * @hide
+         */
+        public static final String SHOW_FOURG_ICON = "show_fourg_icon";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -4520,6 +4526,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(BATTERY_LIGHT_ENABLED);
             PRIVATE_SETTINGS.add(LOCKSCREEN_QUICK_UNLOCK_CONTROL);
             PRIVATE_SETTINGS.add(USE_OLD_MOBILETYPE);
+            PRIVATE_SETTINGS.add(SHOW_FOURG_ICON);
         }
 
         /**
