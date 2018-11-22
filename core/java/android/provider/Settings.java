@@ -4620,6 +4620,15 @@ public final class Settings {
                 BOOLEAN_VALIDATOR;
 
         /**
+         * Whether to display 4G icon instead LTE
+         * @hide
+         */
+        public static final String SHOW_FOURG_ICON = "show_fourg_icon";
+
+        private static final Validator SHOW_FOURG_ICON_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -4697,6 +4706,7 @@ public final class Settings {
             USE_OLD_MOBILETYPE,
             STATUS_BAR_QUICK_QS_PULLDOWN,
             LOCK_QS_DISABLED,
+            SHOW_FOURG_ICON,
         };
 
         /**
@@ -4829,6 +4839,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(USE_OLD_MOBILETYPE);
             PRIVATE_SETTINGS.add(STATUS_BAR_QUICK_QS_PULLDOWN);
             PRIVATE_SETTINGS.add(LOCK_QS_DISABLED);
+            PRIVATE_SETTINGS.add(SHOW_FOURG_ICON);
         }
 
         /**
@@ -4935,6 +4946,7 @@ public final class Settings {
             VALIDATORS.put(USE_OLD_MOBILETYPE, USE_OLD_MOBILETYPE_VALIDATOR);
             VALIDATORS.put(STATUS_BAR_QUICK_QS_PULLDOWN, STATUS_BAR_QUICK_QS_PULLDOWN_VALIDATOR);
             VALIDATORS.put(LOCK_QS_DISABLED, LOCK_QS_DISABLED_VALIDATOR);
+            VALIDATORS.put(SHOW_FOURG_ICON, SHOW_FOURG_ICON_VALIDATOR);
         }
 
         /**

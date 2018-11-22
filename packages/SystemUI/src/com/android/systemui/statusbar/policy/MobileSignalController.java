@@ -25,6 +25,7 @@ import android.net.NetworkCapabilities;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.provider.Settings;
 import android.provider.Settings.Global;
 import android.telephony.CellSignalStrengthNr;
 import android.telephony.ims.ImsMmTelManager;
@@ -101,6 +102,7 @@ public class MobileSignalController extends SignalController<
     private MobileIconGroup mDefaultIcons;
     private Config mConfig;
     private final Handler mDisplayGraceHandler;
+    private boolean mShow4gForLte;
     @VisibleForTesting
     boolean mInflateSignalStrengths = false;
     @VisibleForTesting
@@ -189,6 +191,37 @@ public class MobileSignalController extends SignalController<
                 }
             }
         };
+        Handler mHandler = new Handler();
+        SettingsObserver settingsObserver = new SettingsObserver(mHandler);
+        settingsObserver.observe();
+    }
+
+    class SettingsObserver extends ContentObserver {
+
+        SettingsObserver(Handler handler) {
+            super(handler);
+        }
+
+        void observe() {
+            mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.SHOW_FOURG_ICON), false, this);
+            updateSettings();
+        }
+
+        /*
+         *  @hide
+         */
+        @Override
+        public void onChange(boolean selfChange) {
+            updateSettings();
+        }
+    }
+
+    private void updateSettings() {
+        mShow4gForLte = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.SHOW_FOURG_ICON, 0) == 1;
+        mapIconSets();
+        updateTelephony();
     }
 
     public void setConfiguration(Config config) {
@@ -309,7 +342,7 @@ public class MobileSignalController extends SignalController<
         mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_HSPA, hGroup);
         mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_HSPAP, hPlusGroup);
 
-        if (mConfig.show4gForLte) {
+        if (mShow4gForLte) {
             mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_LTE, TelephonyIcons.FOUR_G);
             if (mConfig.hideLtePlus) {
                 mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_LTE_CA,
