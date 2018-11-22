@@ -16,14 +16,18 @@
 package com.android.systemui.statusbar.policy;
 
 import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.net.NetworkCapabilities;
+import android.net.Uri;
 import android.os.Handler;
+import android.os.UserHandle;
 import android.os.Looper;
+import android.provider.Settings;
 import android.provider.Settings.Global;
 import android.telephony.CellSignalStrengthNr;
 import android.telephony.ims.ImsMmTelManager;
@@ -63,9 +67,9 @@ import java.io.PrintWriter;
 import java.util.BitSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 
 public class MobileSignalController extends SignalController<
         MobileSignalController.MobileState, MobileSignalController.MobileIconGroup> {
@@ -92,6 +96,7 @@ public class MobileSignalController extends SignalController<
     private SignalStrength mSignalStrength;
     private MobileIconGroup mDefaultIcons;
     private Config mConfig;
+    private boolean mShow4gForLte;
     @VisibleForTesting
     boolean mInflateSignalStrengths = false;
     // Some specific carriers have 5GE network which is special LTE CA network.
@@ -167,6 +172,40 @@ public class MobileSignalController extends SignalController<
                 updateTelephony();
             }
         };
+
+        Handler mHandler = new Handler();
+        SettingsObserver settingsObserver = new SettingsObserver(mHandler);
+        settingsObserver.observe();
+    }
+
+    class SettingsObserver extends ContentObserver {
+        SettingsObserver(Handler handler) {
+            super(handler);
+        }
+        void observe() {
+            ContentResolver resolver = mContext.getContentResolver();
+            resolver.registerContentObserver(
+                    Settings.System.getUriFor(Settings.System.SHOW_FOURG_ICON), false,
+                    this, UserHandle.USER_ALL);
+            updateSettings();
+        }
+        /*
+         *  @hide
+         */
+        @Override
+        public void onChange(boolean selfChange) {
+            updateSettings();
+        }
+    }
+
+    private void updateSettings() {
+        ContentResolver resolver = mContext.getContentResolver();
+        mShow4gForLte = Settings.System.getIntForUser(resolver,
+                        Settings.System.SHOW_FOURG_ICON, 0,
+                        UserHandle.USER_CURRENT) == 1;
+        mapIconSets();
+        updateTelephony();
+
     }
 
     public void setConfiguration(Config config) {
@@ -281,7 +320,7 @@ public class MobileSignalController extends SignalController<
         mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_HSPA, hGroup);
         mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_HSPAP, hPlusGroup);
 
-        if (mConfig.show4gForLte) {
+        if (mShow4gForLte) {
             mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_LTE, TelephonyIcons.FOUR_G);
             if (mConfig.hideLtePlus) {
                 mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_LTE_CA,
