@@ -24,6 +24,17 @@ public class ThemeAccentUtils {
 
     public static final String TAG = "ThemeAccentUtils";
 
+    // Vendor overlays to ignore
+    public static final String[] BLACKLIST_VENDOR_OVERLAYS = {
+        "SysuiDarkTheme",
+        "Pixel",
+        "DisplayCutoutEmulationCorner",
+        "DisplayCutoutEmulationDouble",
+        "DisplayCutoutEmulationNarrow",
+        "DisplayCutoutEmulationTall",
+        "DisplayCutoutEmulationWide",
+    };
+
     // Stock dark theme package
     private static final String STOCK_DARK_THEME = "com.android.systemui.theme.dark";
 
