@@ -31,4 +31,17 @@
         <item>3</item>
     </string-array>
 
+    <!-- Network traffic mode -->
+    <string-array name="tuner_network_traffic_mode_entries" translatable="false">
+        <item>@string/tuner_network_traffic_mode_disabled</item>
+        <item>@string/tuner_network_traffic_mode_statusbar</item>
+        <item>@string/tuner_network_traffic_mode_expanded</item>
+    </string-array>
+
+    <string-array name="tuner_network_traffic_mode_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
 </resources>

@@ -116,4 +116,23 @@
         android:summary="@string/volte_icon_summary"
         android:defaultValue="false" />
 
+    <PreferenceCategory
+        android:title="@string/tuner_network_traffic_category" >
+
+        <com.android.systemui.reloaded.SystemSettingListPreference
+            android:key="network_traffic_mode"
+            android:title="@string/tuner_network_traffic_mode_title"
+            android:summary="%s"
+            android:entries="@array/tuner_network_traffic_mode_entries"
+            android:entryValues="@array/tuner_network_traffic_mode_values"
+            android:defaultValue="0" />
+
+        <com.android.systemui.reloaded.SystemSettingSwitchPreference
+            android:key="network_traffic_autohide"
+            android:title="@string/tuner_network_traffic_autohide_title"
+            android:summary="@string/tuner_network_traffic_autohide_summary"
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

@@ -120,4 +120,13 @@
     <string name="tuner_battery_lights_title">Enable battery light</string>
     <string name="tuner_battery_lights_summary">Turn on the light while charging or low battery</string>
 
+    <!-- Network traffic -->
+    <string name="tuner_network_traffic_category">Network traffic monitor</string>
+    <string name="tuner_network_traffic_mode_title">Display mode</string>
+    <string name="tuner_network_traffic_mode_disabled">Disabled</string>
+    <string name="tuner_network_traffic_mode_statusbar">Statusbar</string>
+    <string name="tuner_network_traffic_mode_expanded">Expanded QS</string>
+    <string name="tuner_network_traffic_autohide_title">Auto hide</string>
+    <string name="tuner_network_traffic_autohide_summary">Hide the traffic monitor when there is no activity</string>
+
 </resources>
