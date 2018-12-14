@@ -146,8 +146,8 @@
             android:fragment="com.android.systemui.tuner.PluginFragment" />
 
     <!-- Warning, this goes last. -->
-    <Preference
+    <!--Preference
         android:summary="@string/tuner_persistent_warning"
-        android:selectable="false" />
+        android:selectable="false" /-->
 
 </PreferenceScreen>
