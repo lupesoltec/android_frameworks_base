@@ -80,4 +80,9 @@
     <!-- Facelock toggle -->
     <string name="face_auto_unlock_title">Face auto unlock</string>
     <string name="face_auto_unlock_summary">Dismiss lockscreen after face unlocking</string>
+
+    <!-- Network traffic -->
+    <string name="network_traffic_state_title">Network traffic</string>
+    <string name="network_traffic_state_title_summary">Show network activity</string>
+    <string name="network_traffic_autohide_threshold_title">Net traffic autohide threshold (KB/s)</string>
 </resources>
