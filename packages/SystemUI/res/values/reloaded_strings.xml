@@ -33,7 +33,7 @@
     <string name="quick_settings_caffeine_label">Caffeine</string>
     <string name="accessibility_quick_settings_caffeine_off">Caffeine off</string>
     <string name="accessibility_quick_settings_caffeine_on">Caffeine on</string>
-    
+
     <!-- Screenrecord Notification Ticker -->
     <string name="screenrecord_notif_ticker">Screen is being recorded</string>
     <string name="screenrecord_notif_final_ticker">Screen recorded successfully</string>
@@ -85,4 +85,19 @@
     <string name="network_traffic_state_title">Network traffic</string>
     <string name="network_traffic_state_title_summary">Show network activity</string>
     <string name="network_traffic_autohide_threshold_title">Net traffic autohide threshold (KB/s)</string>
+
+    <!-- Status bar - Battery -->
+    <string name="status_bar_battery_title">Battery</string>
+    <string name="status_bar_battery_style_title">Battery icon style</string>
+    <string name="status_bar_battery_style_portrait">Portrait</string>
+    <string name="status_bar_battery_style_circle">Circle</string>
+    <string name="status_bar_battery_style_text">Text</string>
+    <string name="status_bar_battery_style_hidden">Hidden</string>
+
+    <!-- Status bar - Battery percentage -->
+    <string name="status_bar_battery_percentage_title">Show battery percentage</string>
+    <string name="status_bar_battery_percentage_default">Hidden</string>
+    <string name="status_bar_battery_percentage_text_inside">Inside the icon</string>
+    <string name="status_bar_battery_percentage_text_next">Next to the icon</string>
+
 </resources>
