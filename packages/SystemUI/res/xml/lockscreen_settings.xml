@@ -66,4 +66,10 @@
         android:summary="@string/fingerprint_success_vib_summary"
         android:defaultValue="true" />
 
+    <com.android.systemui.tuner.TunerSwitch
+        android:key="sysui_keyguard_show_watt"
+        android:title="@string/lockscreen_show_watt_title"
+        android:summary="@string/lockscreen_show_watt_summary"
+        sysui:defValue="false" />
+
 </PreferenceScreen>

@@ -41,6 +41,8 @@
     <string name="lockscreen_power_menu_disabled_summary">Disable power menu on secure lock screens</string>
     <string name="lockscreen_qs_disabled_title">Disable quick settings when locked</string>
     <string name="lockscreen_qs_disabled_summary">Disable expanding quick settings on secure lock screens</string>
+    <string name="lockscreen_show_watt_title">Show charging speed</string>
+    <string name="lockscreen_show_watt_summary">Show charging speed in mW</string>
 
     <!-- Shows when people have clicked on the custom lockscreen shortcut [CHAR LIMIT=60] -->
     <string name="lockscreen_custom_hint">Swipe from icon to launch</string>
