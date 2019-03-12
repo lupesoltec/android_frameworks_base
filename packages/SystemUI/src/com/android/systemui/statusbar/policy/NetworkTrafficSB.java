@@ -12,6 +12,8 @@ import android.database.ContentObserver;
 import android.graphics.drawable.Drawable;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.Rect;
+import android.graphics.Typeface;
+import android.view.Gravity;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.TrafficStats;
@@ -42,7 +44,7 @@ public class NetworkTrafficSB extends TextView  implements DarkReceiver {
     private static final int KB = 1024;
     private static final int MB = KB * KB;
     private static final int GB = MB * KB;
-    private static final String symbol = "B/s";
+    private static final String symbol = "/s";
 
     private static DecimalFormat decimalFormat = new DecimalFormat("##0.#");
     static {
@@ -56,7 +58,6 @@ public class NetworkTrafficSB extends TextView  implements DarkReceiver {
     private long totalTxBytes;
     private long lastUpdateTime;
     private int txtSize;
-    private int txtImgPadding;
     private int mTintColor;
 
     private boolean mScreenOn = true;
@@ -87,17 +88,26 @@ public class NetworkTrafficSB extends TextView  implements DarkReceiver {
             if (shouldHide(rxData, txData, timeDelta)) {
                 setText("");
                 setVisibility(View.GONE);
-            } else {
-                // Get information for uplink ready so the line return can be added
+            } else if (shouldShowUpload(rxData, txData, timeDelta)) {
+                // Show information for uplink if it's called for
                 String output = formatOutput(timeDelta, txData, symbol);
-                // Ensure text size is where it needs to be
-                output += "\n";
-                // Add information for downlink if it's called for
-                output += formatOutput(timeDelta, rxData, symbol);
 
                 // Update view if there's anything new to show
                 if (!output.contentEquals(getText())) {
                     setTextSize(TypedValue.COMPLEX_UNIT_PX, (float)txtSize);
+                    setTypeface(Typeface.create("sans-serif-condensed", Typeface.NORMAL));
+                    setGravity(Gravity.RIGHT);
+                    setText(output);
+                }
+            } else {
+                // Add information for downlink if it's called for
+                String output = formatOutput(timeDelta, rxData, symbol);
+
+                // Update view if there's anything new to show
+                if (!output.contentEquals(getText())) {
+                    setTextSize(TypedValue.COMPLEX_UNIT_PX, (float)txtSize);
+		    setTypeface(Typeface.create("sans-serif-condensed", Typeface.NORMAL));
+		    setGravity(Gravity.RIGHT);
                     setText(output);
                 }
                 setVisibility(View.VISIBLE);
@@ -113,9 +123,9 @@ public class NetworkTrafficSB extends TextView  implements DarkReceiver {
         private String formatOutput(long timeDelta, long data, String symbol) {
             long speed = (long)(data / (timeDelta / 1000F));
             if (speed < KB) {
-                return decimalFormat.format(speed) + symbol;
+                return decimalFormat.format(speed / (float)KB) + 'K' + symbol;
             } else if (speed < MB) {
-                return decimalFormat.format(speed / (float)KB) + 'k' + symbol;
+                return decimalFormat.format(speed / (float)KB) + 'K' + symbol;
             } else if (speed < GB) {
                 return decimalFormat.format(speed / (float)MB) + 'M' + symbol;
             }
@@ -123,12 +133,19 @@ public class NetworkTrafficSB extends TextView  implements DarkReceiver {
         }
 
         private boolean shouldHide(long rxData, long txData, long timeDelta) {
-            long speedTxKB = (long)(txData / (timeDelta / 1000f)) / KB;
             long speedRxKB = (long)(rxData / (timeDelta / 1000f)) / KB;
+	    long speedTxKB = (long)(txData / (timeDelta / 1000f)) / KB;
             return !getConnectAvailable() ||
                     (speedRxKB < 0 &&
                     speedTxKB < 0);
         }
+
+	private boolean shouldShowUpload(long rxData, long txData, long timeDelta) {
+	    long speedRxKB = (long)(rxData / (timeDelta / 1000f)) / KB;
+            long speedTxKB = (long)(txData / (timeDelta / 1000f)) / KB;
+
+	    return (speedTxKB > speedRxKB);
+	}
     };
 
     private Runnable mRunnable = new Runnable() {
@@ -179,8 +196,7 @@ public class NetworkTrafficSB extends TextView  implements DarkReceiver {
     public NetworkTrafficSB(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         final Resources resources = getResources();
-        txtSize = resources.getDimensionPixelSize(R.dimen.net_traffic_multi_text_size);
-        txtImgPadding = resources.getDimensionPixelSize(R.dimen.net_traffic_txt_img_padding);
+        txtSize = resources.getDimensionPixelSize(R.dimen.net_traffic_sb_multi_text_size);
         mTintColor = resources.getColor(android.R.color.white);
         Handler mHandler = new Handler();
         SettingsObserver settingsObserver = new SettingsObserver(mHandler);
@@ -269,16 +285,6 @@ public class NetworkTrafficSB extends TextView  implements DarkReceiver {
     private void updateTrafficDrawable() {
         int intTrafficDrawable;
         if (mIsEnabled) {
-            intTrafficDrawable = R.drawable.stat_sys_network_traffic_updown;
-        } else {
-            intTrafficDrawable = 0;
-        }
-        if (intTrafficDrawable != 0) {
-            Drawable d = getContext().getDrawable(intTrafficDrawable);
-            d.setColorFilter(mTintColor, Mode.SRC_ATOP);
-            setCompoundDrawablePadding(txtImgPadding);
-            setCompoundDrawablesWithIntrinsicBounds(null, null, d, null);
-        } else {
             setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
         }
         setTextColor(mTintColor);
@@ -286,10 +292,10 @@ public class NetworkTrafficSB extends TextView  implements DarkReceiver {
 
     public void onDensityOrFontScaleChanged() {
         final Resources resources = getResources();
-        txtSize = resources.getDimensionPixelSize(R.dimen.net_traffic_multi_text_size);
-        txtImgPadding = resources.getDimensionPixelSize(R.dimen.net_traffic_multi_text_size);
+        txtSize = resources.getDimensionPixelSize(R.dimen.net_traffic_sb_multi_text_size);
         setTextSize(TypedValue.COMPLEX_UNIT_PX, (float)txtSize);
-        setCompoundDrawablePadding(txtImgPadding);
+        setTypeface(Typeface.create("sans-serif-condensed", Typeface.NORMAL));
+        setGravity(Gravity.RIGHT);
     }
 
     @Override
