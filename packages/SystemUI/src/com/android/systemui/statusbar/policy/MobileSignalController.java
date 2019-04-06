@@ -103,6 +103,7 @@ public class MobileSignalController extends SignalController<
     private Config mConfig;
     private final Handler mDisplayGraceHandler;
     private boolean mShow4gForLte;
+    private boolean mVoLTEicon;
     @VisibleForTesting
     boolean mInflateSignalStrengths = false;
     @VisibleForTesting
@@ -205,6 +206,8 @@ public class MobileSignalController extends SignalController<
         void observe() {
             mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
                     Settings.System.SHOW_FOURG_ICON), false, this);
+            mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.SHOW_VOLTE_ICON), false, this);
             updateSettings();
         }
 
@@ -220,6 +223,8 @@ public class MobileSignalController extends SignalController<
     private void updateSettings() {
         mShow4gForLte = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.SHOW_FOURG_ICON, 0) == 1;
+        mVoLTEicon = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.SHOW_VOLTE_ICON, 0) == 1;
         mapIconSets();
         updateTelephony();
     }
@@ -418,7 +423,7 @@ public class MobileSignalController extends SignalController<
         int resId = 0;
         int voiceNetTye = getVoiceNetworkType();
         if ( (mCurrentState.voiceCapable || mCurrentState.videoCapable)
-                &&  mCurrentState.imsRegistered ) {
+                &&  mCurrentState.imsRegistered && mVoLTEicon) {
             resId = R.drawable.ic_volte;
         }else if ( (mDataNetType == TelephonyManager.NETWORK_TYPE_LTE
                         || mDataNetType == TelephonyManager.NETWORK_TYPE_LTE_CA)
