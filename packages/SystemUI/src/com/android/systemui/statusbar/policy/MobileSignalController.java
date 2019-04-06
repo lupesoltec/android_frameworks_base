@@ -97,6 +97,7 @@ public class MobileSignalController extends SignalController<
     private MobileIconGroup mDefaultIcons;
     private Config mConfig;
     private boolean mShow4gForLte;
+    private boolean mVoLTEicon;
     @VisibleForTesting
     boolean mInflateSignalStrengths = false;
     // Some specific carriers have 5GE network which is special LTE CA network.
@@ -187,6 +188,9 @@ public class MobileSignalController extends SignalController<
             resolver.registerContentObserver(
                     Settings.System.getUriFor(Settings.System.SHOW_FOURG_ICON), false,
                     this, UserHandle.USER_ALL);
+	    resolver.registerContentObserver(
+                    Settings.System.getUriFor(Settings.System.SHOW_VOLTE_ICON), false,
+                    this, UserHandle.USER_ALL);
             updateSettings();
         }
         /*
@@ -201,8 +205,11 @@ public class MobileSignalController extends SignalController<
     private void updateSettings() {
         ContentResolver resolver = mContext.getContentResolver();
         mShow4gForLte = Settings.System.getIntForUser(resolver,
-                        Settings.System.SHOW_FOURG_ICON, 0,
-                        UserHandle.USER_CURRENT) == 1;
+                Settings.System.SHOW_FOURG_ICON, 0,
+                UserHandle.USER_CURRENT) == 1;
+        mVoLTEicon = Settings.System.getIntForUser(resolver,
+                Settings.System.SHOW_VOLTE_ICON, 0,
+                UserHandle.USER_CURRENT) == 1;
         mapIconSets();
         updateTelephony();
 
@@ -395,7 +402,7 @@ public class MobileSignalController extends SignalController<
         int resId = 0;
         int voiceNetTye = getVoiceNetworkType();
         if ( (mCurrentState.voiceCapable || mCurrentState.videoCapable)
-                &&  mCurrentState.imsRegistered ) {
+                &&  mCurrentState.imsRegistered && mVoLTEicon ) {
             resId = R.drawable.ic_volte;
         }
         return resId;
