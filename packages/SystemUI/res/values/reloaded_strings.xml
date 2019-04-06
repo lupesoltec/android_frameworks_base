@@ -146,6 +146,10 @@
     <string name="show_fourg_icon_title">4G icon</string>
     <string name="show_fourg_icon_summary">Display 4G icon instead of LTE icon</string>
 
+    <!-- Show VoLTE icon on statusbar -->
+    <string name="volte_icon_title">VoLTE icon</string>
+    <string name="volte_icon_summary">Display VoLTE icon</string>
+
     <!-- Quick unlock -->
     <string name="unlock_quick_unlock_control_title">Secure quick unlock</string>
     <string name="unlock_quick_unlock_control_summary">Immediately unlock on correct security entry</string>
