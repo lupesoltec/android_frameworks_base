@@ -24,7 +24,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.UserHandle;
-import android.provider.Settings;
 
 import com.android.systemui.Dependency;
 import com.android.systemui.R;
@@ -98,8 +97,6 @@ public abstract class TunerService {
                 // Disable access to tuner.
                 TunerService.setTunerEnabled(context, false);
                 // Make them sit through the warning dialog again.
-                Settings.Secure.putInt(context.getContentResolver(),
-                        TunerFragment.SETTING_SEEN_TUNER_WARNING, 0);
                 if (onDisabled != null) {
                     onDisabled.run();
                 }
