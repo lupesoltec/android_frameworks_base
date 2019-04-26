@@ -173,4 +173,9 @@
     <string name="global_actions_screenshot">Screenshot</string>
     <string name="global_actions_screenrecord">Screenrecord</string>
     <string name="global_actions_flashlight">Flashlight</string>
+
+    <!-- Buttons -->
+    <string name="buttons_title">Buttons</string>
+    <string name="volume_rocker_music_controls_title">Volume rocker music control</string>
+    <string name="volume_rocker_music_controls_summary">When the screen is off, long-pressing the volume keys will seek music tracks</string>
 </resources>

@@ -50,6 +50,18 @@
         android:fragment="com.android.systemui.tuner.PluginFragment" />
         
     <PreferenceScreen
+        android:key="buttons"
+        android:title="@string/buttons_title" >
+        
+        <com.android.systemui.reloaded.SystemSettingSwitchPreference
+            android:key="volume_button_music_control"
+            android:title="@string/volume_rocker_music_controls_title"
+            android:summary="@string/volume_rocker_music_controls_summary"
+            android:defaultValue="true" />
+                
+    </PreferenceScreen>
+        
+    <PreferenceScreen
         android:key="advanced_power_menu"
         android:title="@string/power_menu_title" >
   
