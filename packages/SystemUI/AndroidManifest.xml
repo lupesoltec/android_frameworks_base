@@ -314,9 +314,9 @@
 
         <activity android:name=".tuner.TunerActivity"
                   android:enabled="true"
-                  android:icon="@drawable/tuner"
+                  android:icon="@drawable/ic_homepage_reloaded_tuner"
                   android:theme="@style/TunerSettings"
-                  android:label="@string/system_ui_tuner"
+                  android:label="@string/reloaded_tuner_title"
                   android:process=":tuner"
                   android:exported="true">
             <intent-filter>
@@ -324,9 +324,15 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <meta-data android:name="com.android.settings.category"
-                    android:value="com.android.settings.category.ia.system" />
+                    android:value="com.android.settings.category.ia.homepage" />
             <meta-data android:name="com.android.settings.summary"
-                    android:resource="@string/summary_empty"/>
+                    android:resource="@string/reloaded_tuner_summary"/>
+            <meta-data android:name="com.android.settings.title"
+                    android:resource="@string/reloaded_tuner_title"/>
+            <meta-data android:name="com.android.settings.icon"
+                    android:resource="@drawable/ic_homepage_reloaded_tuner"/>
+            <meta-data android:name="com.android.settings.bg.hint"
+                    android:resource="@color/reloaded_tuner_background_icon_color"/>
         </activity>
 
         <activity-alias android:name=".DemoMode"

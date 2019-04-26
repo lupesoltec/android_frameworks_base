@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval">
+            <solid
+                android:color="@color/reloaded_tuner_background_icon_color" />
+            <size
+                android:height="@dimen/reloaded_tuner_icon_image_size"
+                android:width="@dimen/reloaded_tuner_icon_image_size" />
+        </shape>
+    </item>
+    <item android:drawable="@drawable/ic_settings_reloaded_tuner" />
+</layer-list>
