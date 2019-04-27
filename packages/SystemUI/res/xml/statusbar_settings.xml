@@ -127,6 +127,14 @@
 
     <PreferenceCategory
         android:title="@string/status_bar_others_title" >
+        
+        <com.android.systemui.reloaded.SecureSettingListPreference
+            android:key="qs_quick_pulldown"
+            android:title="@string/status_bar_quick_qs_pulldown_title"
+            android:summary="%s"
+            android:entries="@array/status_bar_quick_qs_pulldown_entries"
+            android:entryValues="@array/status_bar_quick_qs_pulldown_values"
+            android:defaultValue="0" />
 
         <com.android.systemui.reloaded.SystemSettingSwitchPreference
             android:key="show_fourg_icon"
