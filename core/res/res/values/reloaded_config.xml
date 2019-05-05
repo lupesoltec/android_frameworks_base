@@ -41,4 +41,7 @@
   <!-- If this is true, key chords can be used to take a screen record on the device. -->
   <bool name="config_enableScreenrecordChord">true</bool>
 
+  <!-- Whether device has a physical display cutout -->
+  <bool name="config_physicalDisplayCutout">false</bool>
+
 </resources>
