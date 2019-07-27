@@ -124,6 +124,23 @@
             android:defaultValue="false" />
 
     </PreferenceCategory>
+    
+    <PreferenceCategory
+        android:title="@string/network_traffic_title" >
+
+        <com.android.systemui.reloaded.SystemSettingSwitchPreference
+            android:key="network_traffic_state"
+            android:title="@string/network_traffic_state_title"
+            android:summary="@string/network_traffic_state_summary"
+            android:defaultValue="false" />
+            
+        <com.android.systemui.reloaded.SystemSettingSwitchPreference
+            android:key="network_traffic_autohide"
+            android:title="@string/network_traffic_autohide_title"
+            android:summary="@string/network_traffic_autohide_summary"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:title="@string/status_bar_others_title" >
@@ -152,12 +169,6 @@
             android:key="use_old_mobiletype"
             android:title="@string/use_old_mobiletype_title"
             android:summary="@string/use_old_mobiletype_summary"
-            android:defaultValue="false" />
-
-        <com.android.systemui.reloaded.SystemSettingSwitchPreference
-            android:key="network_traffic_state"
-            android:title="@string/network_traffic_state_title"
-            android:summary="@string/network_traffic_state_title_summary"
             android:defaultValue="false" />
 
     </PreferenceCategory>

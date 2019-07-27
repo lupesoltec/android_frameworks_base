@@ -148,7 +148,7 @@ public class NetworkTraffic extends TextView {
                     .getUriFor(Settings.System.NETWORK_TRAFFIC_STATE), false,
                     this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System
-                    .getUriFor(Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD), false,
+                    .getUriFor(Settings.System.NETWORK_TRAFFIC_AUTOHIDE), false,
                     this, UserHandle.USER_ALL);
         }
 
@@ -264,7 +264,7 @@ public class NetworkTraffic extends TextView {
                 UserHandle.USER_CURRENT) == 1;
         }
         mAutoHideThreshold = Settings.System.getIntForUser(resolver,
-                Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD, 1,
+                Settings.System.NETWORK_TRAFFIC_AUTOHIDE, 0,
                 UserHandle.USER_CURRENT);
     }
 

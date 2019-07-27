@@ -4269,10 +4269,10 @@ public final class Settings {
          */
         public static final String NETWORK_TRAFFIC_STATE = "network_traffic_state";
          /**
-         * Network traffic inactivity threshold (default is 1 kBs)
+         * Autohide network traffic on inactivity
          * @hide
          */
-        public static final String NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD = "network_traffic_autohide_threshold";
+        public static final String NETWORK_TRAFFIC_AUTOHIDE = "network_traffic_autohide";
 
         /** 
          * Whether to skip music track with volume rocker
@@ -4662,7 +4662,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(PROXIMITY_ON_WAKE);
             PRIVATE_SETTINGS.add(FACE_AUTO_UNLOCK);
             PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_STATE);
-            PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD);
+            PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_AUTOHIDE);
             PRIVATE_SETTINGS.add(VOLUME_BUTTON_MUSIC_CONTROL);
             PRIVATE_SETTINGS.add(SCREENSHOT_SOUND);
             PRIVATE_SETTINGS.add(BUTTON_EXTRA_KEY_MAPPING);

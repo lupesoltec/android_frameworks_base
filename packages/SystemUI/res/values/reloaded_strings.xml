@@ -128,7 +128,14 @@
     <string name="status_bar_clock_show_seconds_title">Show seconds</string>
     <string name="status_bar_clock_show_am_pm_title">Show AM/PM</string>
     <string name="status_bar_clock_show_day_title">Show day of the week</string>
-    
+
+    <!-- Status bar - Network traffic -->
+    <string name="network_traffic_title">Network traffic</string>
+    <string name="network_traffic_state_title">Enable network traffic</string>
+    <string name="network_traffic_state_summary">Show network activity</string>
+    <string name="network_traffic_autohide_title">Autohide network traffic</string>
+    <string name="network_traffic_autohide_summary">Autohide network traffic on inactivity</string>
+
     <!-- Status bar - Others -->
     <string name="status_bar_quick_qs_pulldown_title">Quick pulldown</string>
     <string name="status_bar_quick_qs_pulldown_off">Off</string>
@@ -141,9 +148,7 @@
     <string name="show_fourg_icon_summary">Display 4G icon instead of LTE icon</string>
     <string name="volte_icon_title">VoLTE icon</string>
     <string name="volte_icon_summary">Display VoLTE icon</string>
-    <string name="network_traffic_state_title">Network traffic</string>
-    <string name="network_traffic_state_title_summary">Show network activity</string>
-    
+
     <!-- System Tuner -->
     <string name="system_tuner">System Tuner</string>
     <string name="system_tuner_summary">Tune your experience</string>
