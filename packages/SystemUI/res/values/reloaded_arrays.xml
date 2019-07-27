@@ -84,4 +84,17 @@
         <item>2</item>
     </string-array>
 
+    <!-- Quick pulldown -->
+    <string-array name="network_traffic_position_entries" translatable="false">
+        <item>@string/network_traffic_position_auto</item>
+        <item>@string/network_traffic_position_statusbar</item>
+        <item>@string/network_traffic_position_expanded</item>
+    </string-array>
+
+    <string-array name="network_traffic_position_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
 </resources>

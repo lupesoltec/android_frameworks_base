@@ -56,6 +56,7 @@ public class NetworkTraffic extends TextView {
     private int txtImgPadding;
     private boolean mHideArrow;
     private int mAutoHideThreshold;
+    private int mPosition;
     private int mTintColor;
 
     private boolean mScreenOn = true;
@@ -153,6 +154,9 @@ public class NetworkTraffic extends TextView {
                     this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System
                     .getUriFor(Settings.System.NETWORK_TRAFFIC_HIDEARROW), false,
+                    this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System
+                    .getUriFor(Settings.System.NETWORK_TRAFFIC_POSITION), false,
                     this, UserHandle.USER_ALL);
         }
 
@@ -260,13 +264,26 @@ public class NetworkTraffic extends TextView {
 
     private void setMode() {
         ContentResolver resolver = mContext.getContentResolver();
-        if(!hasNotch()){
+        mPosition = Settings.System.getIntForUser(resolver,
+            Settings.System.NETWORK_TRAFFIC_POSITION, 0,
+            UserHandle.USER_CURRENT);
+        if(mPosition == 0){
+            if(!hasNotch()){
+                mIsEnabled = false;
+            }else{
+                mIsEnabled = Settings.System.getIntForUser(resolver,
+                    Settings.System.NETWORK_TRAFFIC_STATE, 0,
+                    UserHandle.USER_CURRENT) == 1;
+            }
+        }else if(mPosition == 1){
             mIsEnabled = false;
-        }else{
+        }else if(mPosition == 2){
             mIsEnabled = Settings.System.getIntForUser(resolver,
                 Settings.System.NETWORK_TRAFFIC_STATE, 0,
                 UserHandle.USER_CURRENT) == 1;
         }
+        
+        
         mAutoHideThreshold = Settings.System.getIntForUser(resolver,
                 Settings.System.NETWORK_TRAFFIC_AUTOHIDE, 0,
                 UserHandle.USER_CURRENT);

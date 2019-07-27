@@ -66,6 +66,7 @@ public class NetworkTrafficSB extends TextView implements StatusIconDisplayable 
     private int txtImgPadding;
     private boolean mHideArrow;
     private int mAutoHideThreshold;
+    private int mPosition;
     private int mTintColor;
     private int mVisibleState = -1;
     private boolean mTrafficVisible = false;
@@ -167,6 +168,9 @@ public class NetworkTrafficSB extends TextView implements StatusIconDisplayable 
                     this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System
                     .getUriFor(Settings.System.NETWORK_TRAFFIC_HIDEARROW), false,
+                    this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System
+                    .getUriFor(Settings.System.NETWORK_TRAFFIC_POSITION), false,
                     this, UserHandle.USER_ALL);
         }
 
@@ -276,12 +280,23 @@ public class NetworkTrafficSB extends TextView implements StatusIconDisplayable 
 
     private void setMode() {
         ContentResolver resolver = mContext.getContentResolver();
-        if(hasNotch()){
-            mIsEnabled = false;
-        }else{
+        mPosition = Settings.System.getIntForUser(resolver,
+            Settings.System.NETWORK_TRAFFIC_POSITION, 0,
+            UserHandle.USER_CURRENT);
+        if(mPosition == 0){
+            if(hasNotch()){
+                mIsEnabled = false;
+            }else{
+                mIsEnabled = Settings.System.getIntForUser(resolver,
+                    Settings.System.NETWORK_TRAFFIC_STATE, 0,
+                    UserHandle.USER_CURRENT) == 1;
+            }
+        }else if(mPosition == 1){
             mIsEnabled = Settings.System.getIntForUser(resolver,
                 Settings.System.NETWORK_TRAFFIC_STATE, 0,
                 UserHandle.USER_CURRENT) == 1;
+        }else if(mPosition == 2){
+            mIsEnabled = false;
         }
         mAutoHideThreshold = Settings.System.getIntForUser(resolver,
                 Settings.System.NETWORK_TRAFFIC_AUTOHIDE, 0,
@@ -379,8 +394,7 @@ public class NetworkTrafficSB extends TextView implements StatusIconDisplayable 
     }
 
     private void updateVisibility() {
-        if (!hasNotch() && mIsEnabled &&
-                mTrafficVisible && mSystemIconVisible) {
+        if (mIsEnabled && mTrafficVisible && mSystemIconVisible) {
             setVisibility(View.VISIBLE);
         } else {
             setVisibility(View.GONE);

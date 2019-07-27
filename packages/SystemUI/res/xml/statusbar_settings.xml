@@ -145,6 +145,14 @@
             android:title="@string/network_traffic_hidearrow_title"
             android:summary="@string/network_traffic_hidearrow_summary"
             android:defaultValue="false" />
+            
+        <com.android.systemui.reloaded.SystemSettingListPreference
+            android:key="network_traffic_position"
+            android:title="@string/network_traffic_position_title"
+            android:summary="%s"
+            android:entries="@array/network_traffic_position_entries"
+            android:entryValues="@array/network_traffic_position_values"
+            android:defaultValue="0" />
 
     </PreferenceCategory>
 
