@@ -53,6 +53,7 @@ public class NetworkTraffic extends TextView {
     private long totalRxBytes;
     private long totalTxBytes;
     private long lastUpdateTime;
+    private boolean mAutoHide;
     protected int mTintColor;
 
     private boolean mScreenOn = true;
@@ -165,23 +166,26 @@ public class NetworkTraffic extends TextView {
         }
 
         private boolean shouldHide(long rxData, long txData, long timeDelta) {
+            if (!mAutoHide) {
+                return false;
+            }
             long speedRxKB = (long)(rxData / (timeDelta / 1000f)) / KB;
             long speedTxKB = (long)(txData / (timeDelta / 1000f)) / KB;
             return !getConnectAvailable() ||
-                    (speedRxKB < 0 &&
-                    speedTxKB < 0);
+                    !(speedRxKB > 0 &&
+                    speedTxKB > 0);
         }
 
         private boolean shouldShowUpload(long rxData, long txData, long timeDelta) {
             long speedRxKB = (long)(rxData / (timeDelta / 1000f)) / KB;
-                long speedTxKB = (long)(txData / (timeDelta / 1000f)) / KB;
+            long speedTxKB = (long)(txData / (timeDelta / 1000f)) / KB;
 
             return (speedTxKB > speedRxKB);
         }
     };
 
     protected boolean restoreViewQuickly() {
-        return getConnectAvailable() && mAutoHideThreshold == 0;
+        return !mAutoHide || getConnectAvailable();
     }
 
     protected void makeVisible() {
@@ -265,7 +269,10 @@ public class NetworkTraffic extends TextView {
         void observe() {
             ContentResolver resolver = mContext.getContentResolver();
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.NETWORK_TRAFFIC_STATE), 
+                    Settings.System.NETWORK_TRAFFIC_STATE),
+                    false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.NETWORK_TRAFFIC_AUTOHIDE),
                     false, this, UserHandle.USER_ALL);
         }
 
@@ -320,6 +327,8 @@ public class NetworkTraffic extends TextView {
         ContentResolver resolver = mContext.getContentResolver();
         mIsEnabled = Settings.System.getIntForUser(resolver,
                 Settings.System.NETWORK_TRAFFIC_STATE, 0, UserHandle.USER_CURRENT) == 1;
+        mAutoHide = Settings.System.getIntForUser(resolver,
+                Settings.System.NETWORK_TRAFFIC_AUTOHIDE, 1, UserHandle.USER_CURRENT) == 1;
         setGravity(Gravity.CENTER);
         setMaxLines(2);
         setSpacingAndFonts();
