@@ -631,6 +631,8 @@ public class StatusBar extends SystemUI implements DemoMode,
                     Settings.System.USE_OLD_MOBILETYPE), false, this);
             mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_QUICK_QS_PULLDOWN), false, this);
+            mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.LOCK_QS_DISABLED), false, this);
         }
 
         @Override
