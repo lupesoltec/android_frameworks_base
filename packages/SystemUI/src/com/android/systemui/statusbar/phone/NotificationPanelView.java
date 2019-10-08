@@ -3319,6 +3319,7 @@ public class NotificationPanelView extends PanelView implements
             mQs.setHeaderClickable(mQsExpansionEnabled);
             updateQSPulseExpansion();
             mQs.setOverscrolling(mStackScrollerOverscrolling);
+            mQs.setSecureExpandDisabled(isQsSecureExpandDisabled());
 
             // recompute internal state when qspanel height changes
             mQs.getView().addOnLayoutChangeListener(
