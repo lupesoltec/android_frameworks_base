@@ -33,6 +33,11 @@
         android:title="@string/tuner_lock_screen"
         android:fragment="com.android.systemui.tuner.LockscreenFragment" />
 
+    <Preference
+        android:key="advanced_power_menu"
+        android:title="@string/power_menu_title"
+        android:fragment="com.android.systemui.tuner.PowerMenuFragment" />
+
     <PreferenceScreen
         android:key="doze"
         android:title="@string/tuner_doze">

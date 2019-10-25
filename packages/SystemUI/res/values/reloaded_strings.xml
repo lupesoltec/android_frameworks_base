@@ -30,4 +30,9 @@
     <string name="global_action_reboot_recovery">Recovery</string>
     <string name="global_action_reboot_bootloader">Bootloader</string>
 
+    <!-- Power Menu -->
+    <string name="power_menu_title">Power Menu</string>
+    <string name="global_actions_advanced_reboot_title">Advanced restart</string>
+    <string name="global_actions_advanced_reboot_summary">Show recovery and bootloader restart options</string>
+
 </resources>
