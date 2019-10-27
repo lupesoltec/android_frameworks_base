@@ -39,6 +39,8 @@
     <string name="lockscreen_clock">Lockscreen clock</string>
     <string name="lockscreen_power_menu_disabled_title">Disable power menu when locked</string>
     <string name="lockscreen_power_menu_disabled_summary">Disable power menu on secure lock screens</string>
+    <string name="lockscreen_qs_disabled_title">Disable quick settings when locked</string>
+    <string name="lockscreen_qs_disabled_summary">Disable expanding quick settings on secure lock screens</string>
 
     <!-- Shows when people have clicked on the custom lockscreen shortcut [CHAR LIMIT=60] -->
     <string name="lockscreen_custom_hint">Swipe from icon to launch</string>

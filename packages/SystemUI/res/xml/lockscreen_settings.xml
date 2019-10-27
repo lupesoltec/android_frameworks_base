@@ -47,6 +47,18 @@
         android:title="@string/double_tap_sleep_lockscreen_title"
         android:summary="@string/double_tap_sleep_lockscreen_summary"
         android:defaultValue="false" />
+        
+    <com.android.systemui.reloaded.SystemSettingSwitchPreference
+        android:key="lockscreen_power_menu_disabled"
+        android:title="@string/lockscreen_power_menu_disabled_title"
+        android:summary="@string/lockscreen_power_menu_disabled_summary"
+        android:defaultValue="false" />
+            
+    <com.android.systemui.reloaded.SystemSettingSwitchPreference
+        android:key="lockscreen_qs_disabled"
+        android:title="@string/lockscreen_qs_disabled_title"
+        android:summary="@string/lockscreen_qs_disabled_summary"
+        android:defaultValue="false" />
 
     <com.android.systemui.reloaded.SystemSettingSwitchPreference
         android:key="fingerprint_success_vib"
