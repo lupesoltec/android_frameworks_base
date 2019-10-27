@@ -41,7 +41,9 @@
     <string name="double_tap_sleep_lockscreen_title">Double tap to sleep</string>
     <string name="double_tap_sleep_lockscreen_summary">Double tap anywhere on the lock screen to put the device to sleep</string>
 
-    <!-- Lockscreen clock -->
+    <!-- Lockscreen -->
     <string name="lockscreen_clock">Lockscreen clock</string>
+    <string name="lockscreen_power_menu_disabled_title">Disable power menu when locked</string>
+    <string name="lockscreen_power_menu_disabled_summary">Disable power menu on secure lock screens</string>
 
 </resources>
