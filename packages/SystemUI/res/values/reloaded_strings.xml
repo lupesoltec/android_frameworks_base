@@ -46,4 +46,8 @@
     <string name="lockscreen_power_menu_disabled_title">Disable power menu when locked</string>
     <string name="lockscreen_power_menu_disabled_summary">Disable power menu on secure lock screens</string>
 
+    <!-- Fingerprint authentication vibration -->
+    <string name="fingerprint_success_vib_title">Fingerprint authentication</string>
+    <string name="fingerprint_success_vib_summary">Vibrate on successful fingerprint authentication</string>
+
 </resources>
