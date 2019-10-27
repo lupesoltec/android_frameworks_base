@@ -42,4 +42,11 @@
     
     <!-- Shows when people have clicked on the custom lockscreen shortcut [CHAR LIMIT=60] -->
     <string name="lockscreen_custom_hint">Swipe from icon to launch</string>
+    
+    <!-- Status bar -->
+    <string name="status_bar_icons">Statusbar icons</string>
+    
+    <!-- Double tap to sleep -->
+    <string name="double_tap_to_sleep_title">Double-tap to sleep</string>
+    <string name="double_tap_to_sleep_summary">Double tap on the status bar to put the device to sleep</string>
 </resources>
