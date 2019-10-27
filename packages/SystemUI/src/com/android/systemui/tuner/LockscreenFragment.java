@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.LauncherActivityInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
+
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -155,6 +156,27 @@ public class LockscreenFragment extends PreferenceFragment {
             title = (TextView) itemView.findViewById(android.R.id.title);
             expand = (ExpandableIndicator) itemView.findViewById(R.id.expand);
         }
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(Preference preference) {
+        switch (preference.getKey()) {
+            case "lockscreen_clock":
+                try {
+                    String activityName = "com.android.wallpaper";
+                    String className = "com.android.customization.picker.CustomizationPickerActivity";
+                    Intent intent = new Intent();
+                    intent.setComponent(new ComponentName(activityName, className));
+                    startActivity(intent);
+                } catch (Exception e){
+                }
+
+                break;
+            default:
+                return super.onPreferenceTreeClick(preference);
+
+        }
+        return true;
     }
 
     private static class StaticShortcut extends Item {
