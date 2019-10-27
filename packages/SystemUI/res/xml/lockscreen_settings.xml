@@ -18,6 +18,9 @@
     xmlns:sysui="http://schemas.android.com/apk/res-auto"
     android:title="@string/other">
 
+    <Preference
+        android:key="lockscreen_clock"
+        android:title="@string/lockscreen_clock" />
 
     <Preference
         android:key="sysui_keyguard_left"
