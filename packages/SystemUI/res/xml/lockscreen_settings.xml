@@ -49,6 +49,12 @@
         android:defaultValue="false" />
 
     <com.android.systemui.reloaded.SystemSettingSwitchPreference
+        android:key="lockscreen_qs_disabled"
+        android:title="@string/lockscreen_qs_disabled_title"
+        android:summary="@string/lockscreen_qs_disabled_summary"
+        android:defaultValue="false" />
+
+    <com.android.systemui.reloaded.SystemSettingSwitchPreference
         android:key="fingerprint_success_vib"
         android:title="@string/fingerprint_success_vib_title"
         android:summary="@string/fingerprint_success_vib_summary"
