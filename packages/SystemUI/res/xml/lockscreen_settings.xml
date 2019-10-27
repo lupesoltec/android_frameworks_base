@@ -41,11 +41,17 @@
         android:key="sysui_keyguard_right_unlock"
         android:title="@string/lockscreen_unlock_right"
         sysui:defValue="true" />
-        
+
     <com.android.systemui.reloaded.SystemSettingSwitchPreference
         android:key="double_tap_sleep_lockscreen"
         android:title="@string/double_tap_sleep_lockscreen_title"
         android:summary="@string/double_tap_sleep_lockscreen_summary"
         android:defaultValue="false" />
+
+    <com.android.systemui.reloaded.SystemSettingSwitchPreference
+        android:key="fingerprint_success_vib"
+        android:title="@string/fingerprint_success_vib_title"
+        android:summary="@string/fingerprint_success_vib_summary"
+        android:defaultValue="true" />
 
 </PreferenceScreen>
