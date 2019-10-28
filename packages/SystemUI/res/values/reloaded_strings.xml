@@ -33,6 +33,8 @@
     <string name="show_fourg_icon_summary">Display 4G icon instead of LTE icon</string>
     <string name="volte_icon_title">Show HD icon</string>
     <string name="volte_icon_summary">Display VoLTE icon</string>
+    <string name="status_bar_show_battery_percent_title">Battery percentage</string>
+    <string name="status_bar_show_battery_percent_summary">Show battery percentage in status bar</string>
 
     <!-- Advanced reboot -->
     <string name="global_action_reboot">Restart</string>
