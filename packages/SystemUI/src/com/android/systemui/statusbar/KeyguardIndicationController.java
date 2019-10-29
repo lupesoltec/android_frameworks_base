@@ -368,7 +368,8 @@ public class KeyguardIndicationController implements StateListener,
                     final boolean showWattOnCharging = Dependency.get(TunerService.class)
                             .getValue(KEYGUARD_SHOW_WATT_ON_CHARGING, 0) == 1;
                     if (showWattOnCharging) {
-                        indication += ",  " + (mChargingWattage / 1000) + " mW";
+                        float chargingWatt = ((float)mChargingWattage)  / 1000000;
+                        indication += " - " + chargingWatt + "W";
                     }
                     if (animate) {
                         animateText(mTextView, indication);
@@ -401,7 +402,8 @@ public class KeyguardIndicationController implements StateListener,
                 final boolean showWattOnCharging = Dependency.get(TunerService.class)
                         .getValue(KEYGUARD_SHOW_WATT_ON_CHARGING, 0) == 1;
                 if (showWattOnCharging) {
-                    indication += ",  " + (mChargingWattage / 1000) + " mW";
+                    float chargingWatt = ((float)mChargingWattage)  / 1000000;
+                    indication += " - " + chargingWatt + "W";
                 }
                 mTextView.setTextColor(mInitialTextColorState);
                 if (animate) {
