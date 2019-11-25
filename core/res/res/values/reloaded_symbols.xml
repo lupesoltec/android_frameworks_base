@@ -24,4 +24,7 @@
     <java-symbol type="array" name="config_deviceKeyHandlerLibs" />
     <java-symbol type="array" name="config_deviceKeyHandlerClasses" />
 
+    <!-- Whether to show WiFi/Hotspot generation number -->
+    <java-symbol type="bool" name="config_show_network_generation" />
+
 </resources>
