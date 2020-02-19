@@ -22,6 +22,8 @@
 
     <!-- Status bar -->
     <string name="status_bar_icons">Statusbar icons</string>
+    <string name="use_old_mobiletype_title">Use old mobile type style</string>
+    <string name="use_old_mobiletype_summary">Merge signal and type icons</string>
 
     <!-- Advanced reboot -->
     <string name="global_action_reboot">Restart</string>
