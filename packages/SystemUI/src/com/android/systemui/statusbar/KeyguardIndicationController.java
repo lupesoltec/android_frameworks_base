@@ -120,7 +120,7 @@ public class KeyguardIndicationController implements StateListener,
     private int mChargingSpeed;
     private int mChargingWattage;
     private int mBatteryLevel;
-    private int mChargingCurrent;
+    private double mChargingCurrent;
     private double mChargingVoltage;
     private int mTemperature;
     private String mMessageToShowOnScreenOn;
@@ -547,7 +547,8 @@ public class KeyguardIndicationController implements StateListener,
             Settings.System.LOCKSCREEN_BATTERY_INFO, 0) == 1;
          if (showbatteryInfo) {
             if (mChargingCurrent > 0) {
-                batteryInfo = batteryInfo + (mChargingCurrent / 1000) + "mA";
+                batteryInfo = batteryInfo + String.format("%.1f",
+                        (mChargingCurrent / 1000 / 1000)) + "A";
             }
             if (mChargingVoltage > 0) {
                 batteryInfo = (batteryInfo == "" ? "" : batteryInfo + " · ") +
