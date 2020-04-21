@@ -113,4 +113,11 @@
     <string name="quick_settings_full_screenshot_label">Full</string>
     <string name="quick_settings_region_screenshot_label">Partial</string>
 
+    <!-- Lights -->
+    <string name="tuner_lights">Lights</string>
+    <string name="tuner_notification_lights_title">Enable notification light</string>
+    <string name="tuner_notification_lights_summary">Blink light on incoming notifications</string>
+    <string name="tuner_battery_lights_title">Enable battery light</string>
+    <string name="tuner_battery_lights_summary">Turn on the light while charging or low battery</string>
+
 </resources>

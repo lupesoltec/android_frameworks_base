@@ -24,6 +24,11 @@
         android:fragment="com.android.systemui.tuner.StatusBarFragment" />
 
     <Preference
+        android:key="tuner_lights"
+        android:title="@string/tuner_lights"
+        android:fragment="com.android.systemui.tuner.LightsFragment" />
+
+    <Preference
         android:key="nav_bar"
         android:title="@string/nav_bar"
         android:fragment="com.android.systemui.tuner.NavBarTuner" />

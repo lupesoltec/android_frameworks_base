@@ -29,6 +29,7 @@ public class TunerFragment extends PreferenceFragment {
 
     private static final String TAG = "TunerFragment";
 
+    private static final String KEY_LIGHTS = "tuner_lights";
     private static final String KEY_PLUGINS = "plugins";
     private static final CharSequence KEY_DOZE = "doze";
 
@@ -51,6 +52,10 @@ public class TunerFragment extends PreferenceFragment {
         }
         if (!alwaysOnAvailable()) {
             getPreferenceScreen().removePreference(findPreference(KEY_DOZE));
+        }
+        if (!getContext().getResources().getBoolean(
+                com.android.internal.R.bool.config_intrusiveNotificationLed)) {
+            getPreferenceScreen().removePreference(findPreference(KEY_LIGHTS));
         }
     }
 
