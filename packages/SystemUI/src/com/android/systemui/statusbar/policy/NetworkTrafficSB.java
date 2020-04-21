@@ -7,6 +7,8 @@ import static com.android.systemui.statusbar.StatusBarIconView.STATE_ICON;
 import android.content.Context;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.os.UserHandle;
+import android.provider.Settings;
 import android.text.style.RelativeSizeSpan;
 import android.util.AttributeSet;
 import android.view.View;
@@ -61,7 +63,8 @@ public class NetworkTrafficSB extends NetworkTraffic implements DarkReceiver, St
     @Override
     protected void setMode() {
         super.setMode();
-        mIsEnabled = mIsEnabled && !Utils.hasNotch(mContext);
+        mIsEnabled = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.NETWORK_TRAFFIC_MODE, 0, UserHandle.USER_CURRENT) == 1;
     }
 
     @Override

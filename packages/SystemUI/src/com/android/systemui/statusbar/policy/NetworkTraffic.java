@@ -269,7 +269,7 @@ public class NetworkTraffic extends TextView {
         void observe() {
             ContentResolver resolver = mContext.getContentResolver();
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.NETWORK_TRAFFIC_STATE),
+                    Settings.System.NETWORK_TRAFFIC_MODE),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.NETWORK_TRAFFIC_AUTOHIDE),
@@ -326,7 +326,7 @@ public class NetworkTraffic extends TextView {
     protected void setMode() {
         ContentResolver resolver = mContext.getContentResolver();
         mIsEnabled = Settings.System.getIntForUser(resolver,
-                Settings.System.NETWORK_TRAFFIC_STATE, 0, UserHandle.USER_CURRENT) == 1;
+                Settings.System.NETWORK_TRAFFIC_MODE, 0, UserHandle.USER_CURRENT) == 2;
         mAutoHide = Settings.System.getIntForUser(resolver,
                 Settings.System.NETWORK_TRAFFIC_AUTOHIDE, 1, UserHandle.USER_CURRENT) == 1;
         setGravity(Gravity.CENTER);

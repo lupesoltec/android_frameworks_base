@@ -4674,13 +4674,16 @@ public final class Settings {
                 BOOLEAN_VALIDATOR;
 
         /**      
-         * Wheter to show network traffic indicator in statusbar
+         * Network traffic indicator mode
+         * 0 = Disabled
+         * 1 = Statusbar
+         * 2 = Expanded QS
          * @hide
          */
-        public static final String NETWORK_TRAFFIC_STATE = "network_traffic_state";
+        public static final String NETWORK_TRAFFIC_MODE = "network_traffic_mode";
 
-        private static final Validator NETWORK_TRAFFIC_STATE_VALIDATOR =
-                BOOLEAN_VALIDATOR;
+        private static final Validator NETWORK_TRAFFIC_MODE_VALIDATOR =
+                new SettingsValidators.InclusiveIntegerRangeValidator(0, 2);
 
         /**
          * Whether to hide network traffic on inactivity
@@ -4775,7 +4778,7 @@ public final class Settings {
             LOCKSCREEN_BATTERY_INFO,
             BACK_GESTURE_HEIGHT,
             BATTERY_LIGHT_ENABLED,
-            NETWORK_TRAFFIC_STATE,
+            NETWORK_TRAFFIC_MODE,
             NETWORK_TRAFFIC_AUTOHIDE,
         };
 
@@ -4915,7 +4918,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(LOCKSCREEN_BATTERY_INFO);
             PRIVATE_SETTINGS.add(BACK_GESTURE_HEIGHT);
             PRIVATE_SETTINGS.add(BATTERY_LIGHT_ENABLED);
-            PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_STATE);
+            PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_MODE);
             PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_AUTOHIDE);
         }
 
@@ -5029,7 +5032,7 @@ public final class Settings {
             VALIDATORS.put(LOCKSCREEN_BATTERY_INFO, LOCKSCREEN_BATTERY_INFO_VALIDATOR);
             VALIDATORS.put(BACK_GESTURE_HEIGHT, BACK_GESTURE_HEIGHT_VALIDATOR);
             VALIDATORS.put(BATTERY_LIGHT_ENABLED, BATTERY_LIGHT_ENABLED_VALIDATOR);
-            VALIDATORS.put(NETWORK_TRAFFIC_STATE, NETWORK_TRAFFIC_STATE_VALIDATOR);
+            VALIDATORS.put(NETWORK_TRAFFIC_MODE, NETWORK_TRAFFIC_MODE_VALIDATOR);
             VALIDATORS.put(NETWORK_TRAFFIC_AUTOHIDE, NETWORK_TRAFFIC_AUTOHIDE_VALIDATOR);
         }
 
