@@ -769,7 +769,7 @@ public class MobileSignalController extends SignalController<
         //Modem has centralized logic to display 5G icon based on carrier requirements
         //For 5G icon display, only query NrIconType reported by modem
         nr5GIconGroup = null;
-        if ( isSideCarValid() ) {
+        if ( mFiveGState.isNrIconTypeValid() ) {
             nr5GIconGroup = mFiveGState.getIconGroup();
             mCurrentState.iconGroup = nr5GIconGroup;
             if ( mFiveGState.getSignalLevel() > mCurrentState.level ) {
@@ -1030,19 +1030,6 @@ public class MobileSignalController extends SignalController<
         return registered;
     }
 
-    private boolean isSideCarValid() {
-        return isSideCarSaValid() || isSideCarNsaValid();
-    }
-
-    private boolean isSideCarSaValid() {
-        return mFiveGState.getNrConfigType() == NrConfigType.SA_CONFIGURATION
-                && mFiveGState.isNrIconTypeValid();
-    }
-
-    private boolean isSideCarNsaValid() {
-        return  mFiveGState.isNrIconTypeValid() && isDataRegisteredOnLte();
-    }
-
     private boolean isCellSignalStrengthNrValid() {
         return ( mCellSignalStrengthNr != null && mCellSignalStrengthNr.isValid());
     }
@@ -1069,7 +1056,7 @@ public class MobileSignalController extends SignalController<
             if ( networkType == TelephonyManager.NETWORK_TYPE_UNKNOWN ) {
                 networkType = getVoiceNetworkType();
             }
-            if ( isSideCarValid() ) {
+            if ( mFiveGState.isNrIconTypeValid() ) {
                 iconGroup = mFiveGState.getIconGroup();
             }else if (mNetworkToIconLookup.indexOfKey(networkType) >= 0) {
                 iconGroup = mNetworkToIconLookup.get(networkType);
