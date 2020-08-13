@@ -115,6 +115,11 @@
         android:title="@string/show_volte_icon_title"
         android:defaultValue="false" />
 
+    <com.android.systemui.reloaded.SystemSettingSwitchPreference
+        android:key="show_vowifi_icon"
+        android:title="@string/show_vowifi_icon_title"
+        android:defaultValue="false" />
+
     <PreferenceCategory
         android:title="@string/tuner_network_traffic_category" >
 

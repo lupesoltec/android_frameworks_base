@@ -4693,6 +4693,15 @@ public final class Settings {
 
         private static final Validator NETWORK_TRAFFIC_AUTOHIDE_VALIDATOR =
                 BOOLEAN_VALIDATOR;
+                
+        /**
+         * Whether to show VoWiFi icon or not
+         * @hide
+         */
+        public static final String SHOW_VOWIFI_ICON = "show_vowifi_icon";
+
+        private static final Validator SHOW_VOWIFI_ICON_VALIDATOR =
+                BOOLEAN_VALIDATOR;
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
@@ -4780,6 +4789,7 @@ public final class Settings {
             BATTERY_LIGHT_ENABLED,
             NETWORK_TRAFFIC_MODE,
             NETWORK_TRAFFIC_AUTOHIDE,
+            SHOW_VOWIFI_ICON,
         };
 
         /**
@@ -4920,6 +4930,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(BATTERY_LIGHT_ENABLED);
             PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_MODE);
             PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_AUTOHIDE);
+            PRIVATE_SETTINGS.add(SHOW_VOWIFI_ICON);
         }
 
         /**
@@ -5034,6 +5045,7 @@ public final class Settings {
             VALIDATORS.put(BATTERY_LIGHT_ENABLED, BATTERY_LIGHT_ENABLED_VALIDATOR);
             VALIDATORS.put(NETWORK_TRAFFIC_MODE, NETWORK_TRAFFIC_MODE_VALIDATOR);
             VALIDATORS.put(NETWORK_TRAFFIC_AUTOHIDE, NETWORK_TRAFFIC_AUTOHIDE_VALIDATOR);
+            VALIDATORS.put(SHOW_VOWIFI_ICON, SHOW_VOWIFI_ICON_VALIDATOR);
         }
 
         /**

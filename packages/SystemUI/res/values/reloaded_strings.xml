@@ -32,6 +32,7 @@
     <string name="show_fourg_icon_title">Show 4G icon</string>
     <string name="show_fourg_icon_summary">Display 4G icon instead of LTE icon</string>
     <string name="show_volte_icon_title">Show VoLTE icon</string>
+    <string name="show_vowifi_icon_title">Show VoWiFi icon</string>
     <string name="status_bar_show_battery_percent_title">Battery percentage</string>
     <string name="status_bar_show_battery_percent_summary">Show battery percentage in status bar</string>
 

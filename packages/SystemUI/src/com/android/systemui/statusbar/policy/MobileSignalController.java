@@ -104,6 +104,7 @@ public class MobileSignalController extends SignalController<
     private final Handler mDisplayGraceHandler;
     private boolean mShow4gForLte;
     private boolean mShowVolteIcon;
+    private boolean mShowVowifiIcon;
     @VisibleForTesting
     boolean mInflateSignalStrengths = false;
     @VisibleForTesting
@@ -208,6 +209,8 @@ public class MobileSignalController extends SignalController<
                     Settings.System.SHOW_FOURG_ICON), false, this);
             mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
                     Settings.System.SHOW_VOLTE_ICON), false, this);
+            mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.SHOW_VOWIFI_ICON), false, this);
             updateSettings();
         }
 
@@ -225,6 +228,8 @@ public class MobileSignalController extends SignalController<
                 Settings.System.SHOW_FOURG_ICON, 0) == 1;
         mShowVolteIcon = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.SHOW_VOLTE_ICON, 0) == 1;
+        mShowVowifiIcon = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.SHOW_VOWIFI_ICON, 0) == 1;
         mapIconSets();
         updateTelephony();
         notifyListeners();
@@ -529,7 +534,7 @@ public class MobileSignalController extends SignalController<
         }
 
         MobileIconGroup vowifiIconGroup = getVowifiIconGroup();
-        if ( mConfig.showVowifiIcon && vowifiIconGroup != null ) {
+        if ( mConfig.showVowifiIcon && mShowVowifiIcon && vowifiIconGroup != null ) {
             typeIcon = vowifiIconGroup.mDataType;
             statusIcon = new IconState(true,
                     mCurrentState.enabled && !mCurrentState.airplaneMode? statusIcon.icon : 0,
