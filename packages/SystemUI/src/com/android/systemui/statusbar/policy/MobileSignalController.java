@@ -103,7 +103,7 @@ public class MobileSignalController extends SignalController<
     private Config mConfig;
     private final Handler mDisplayGraceHandler;
     private boolean mShow4gForLte;
-    private boolean mVoLTEicon;
+    private boolean mShowVolteIcon;
     @VisibleForTesting
     boolean mInflateSignalStrengths = false;
     @VisibleForTesting
@@ -223,10 +223,11 @@ public class MobileSignalController extends SignalController<
     private void updateSettings() {
         mShow4gForLte = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.SHOW_FOURG_ICON, 0) == 1;
-        mVoLTEicon = Settings.System.getInt(mContext.getContentResolver(),
+        mShowVolteIcon = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.SHOW_VOLTE_ICON, 0) == 1;
         mapIconSets();
         updateTelephony();
+        notifyListeners();
     }
 
     public void setConfiguration(Config config) {
@@ -423,7 +424,7 @@ public class MobileSignalController extends SignalController<
         int resId = 0;
         int voiceNetTye = getVoiceNetworkType();
         if ( (mCurrentState.voiceCapable || mCurrentState.videoCapable)
-                &&  mCurrentState.imsRegistered && mVoLTEicon) {
+                &&  mCurrentState.imsRegistered) {
             resId = R.drawable.ic_volte;
         }
         return resId;
@@ -522,7 +523,7 @@ public class MobileSignalController extends SignalController<
         showDataIcon &= mCurrentState.isDefault || dataDisabled;
         int typeIcon = (showDataIcon || mConfig.alwaysShowDataRatIcon
                 || mConfig.alwaysShowNetworkTypeIcon) ? icons.mDataType : 0;
-        int volteIcon = mConfig.showVolteIcon && isVolteSwitchOn() ? getVolteResId() : 0;
+        int volteIcon = mConfig.showVolteIcon && mShowVolteIcon && isVolteSwitchOn() ? getVolteResId() : 0;
         if ( mConfig.enableRatIconEnhancement ) {
             typeIcon = getEnhancementDataRatIcon();
         }
